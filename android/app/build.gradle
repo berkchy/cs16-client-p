@@ -15,12 +15,11 @@ android {
 		versionCode = getBuildNum()
 		minSdk = 21
 		targetSdk = 36
-
-		ndk {
-        	abiFilters "armeabi-v7a", "arm64-v8a", "x86"
-		}
 	}
 
+	// One APK per architecture. The split set is also what AGP builds native
+	// libraries for, so ndk.abiFilters must stay unset - AGP rejects a project
+	// that sets both.
 	splits {
 		abi {
 			enable true
