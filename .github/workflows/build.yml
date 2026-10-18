@@ -34,7 +34,7 @@ jobs:
           restore-keys: |
             Android-ccache-${{ github.ref_name }}
             Android-ccache-
-      - name: Build and Sign APK
+      - name: Build and Sign APKs
         env:
           KEYSTORE_FILE_PATH: ${{ github.workspace }}/signingkey.jks
           KEYSTORE_PASSWORD: ${{ secrets.KEY_STORE_PASSWORD }}
@@ -44,17 +44,35 @@ jobs:
           if [[ -n "${{ secrets.SIGNING_KEY }}" ]]; then
             echo "${{ secrets.SIGNING_KEY }}" | base64 --decode > ${{ env.KEYSTORE_FILE_PATH }}
             ./gradlew assembleGitContinuous
-            mv app/build/outputs/apk/git/continuous/app-git-continuous.apk CS16Client-Android.apk
+            OUT=app/build/outputs/apk/git/continuous
           else
             ./gradlew assembleGitDebug
-            mv app/build/outputs/apk/git/debug/app-git-debug.apk CS16Client-Android.apk
+            OUT=app/build/outputs/apk/git/debug
           fi
+
+          python3 - "$OUT" "$PWD" <<'PY'
+          import json, pathlib, sys
+
+          out = pathlib.Path(sys.argv[1])
+          dst = pathlib.Path(sys.argv[2])
+          meta = out / "output-metadata.json"
+          if not meta.is_file():
+              raise SystemExit("::error::{} not found".format(meta))
+
+          for element in json.loads(meta.read_text())["elements"]:
+              abis = [f["value"] for f in element.get("filters", []) if f.get("filterType") == "ABI"]
+              if len(abis) != 1:
+                  raise SystemExit("::error::{} is not single-ABI: {}".format(element["outputFile"], abis))
+              name = "CS16Client-Android-{}.apk".format(abis[0])
+              (out / element["outputFile"]).rename(dst / name)
+              print("built " + name)
+          PY
         working-directory: android
       - name: Upload artifacts
         uses: actions/upload-artifact@v4
         with:
           name: Android
-          path: android/CS16Client-Android.apk
+          path: android/CS16Client-Android-*.apk
   psvita:
     name: PS Vita
     runs-on: ubuntu-latest
