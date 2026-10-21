@@ -24,9 +24,6 @@ import su.xash.cs16client.ui.LauncherScreen
  */
 abstract class LauncherActivity : ComponentActivity() {
 
-	/** Game directory inside the engine, "cstrike" or "czero". */
-	protected abstract val gameDir: String
-
 	@get:StringRes
 	protected abstract val titleRes: Int
 
@@ -38,7 +35,7 @@ abstract class LauncherActivity : ComponentActivity() {
 		enableEdgeToEdge()
 
 		setContent {
-			val model: LauncherViewModel = viewModel(factory = LauncherViewModel.factory(gameDir))
+			val model: LauncherViewModel = viewModel(factory = LauncherViewModel.factory())
 
 			val darkTheme = when (model.themeMode) {
 				ThemeMode.SYSTEM -> isSystemInDarkTheme()
@@ -57,6 +54,8 @@ abstract class LauncherActivity : ComponentActivity() {
 					LauncherScreen(
 						title = stringResource(titleRes),
 						subtitle = stringResource(subtitleRes),
+						gameDir = model.gameDir,
+						onGameDirChange = model::updateGameDir,
 						argv = model.argv,
 						onArgvChange = model::updateArgv,
 						commandLine = model.commandLine,

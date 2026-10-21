@@ -112,6 +112,11 @@ if(ANDROID)
 		COPY ${EXTRAS_FILES} ${YAPB_FILES}
 		DESTINATION ${EXTRAS_OUTPUT}
 	)
+
+	# The menu banners (gfx/shell/head_*.bmp) only carry bitmap text, the
+	# icons (btn_*.bmp, splash.bmp) are still needed by the in-game menu.
+	file(GLOB EXTRAS_BANNERS "${EXTRAS_OUTPUT}/gfx/shell/head_*.bmp")
+	file(REMOVE ${EXTRAS_BANNERS})
 else()
 	set(EXTRAS_OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/extras.pk3")
 

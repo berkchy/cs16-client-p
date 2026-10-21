@@ -54,6 +54,7 @@ import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.unit.dp
 import kotlinx.coroutines.launch
+import su.xash.cs16client.GameDir
 import su.xash.cs16client.R
 import su.xash.cs16client.ThemeMode
 
@@ -69,6 +70,8 @@ private val ArgumentPresets = listOf(
 fun LauncherScreen(
 	title: String,
 	subtitle: String,
+	gameDir: GameDir,
+	onGameDirChange: (GameDir) -> Unit,
 	argv: String,
 	onArgvChange: (String) -> Unit,
 	commandLine: String,
@@ -116,6 +119,11 @@ fun LauncherScreen(
 				.padding(horizontal = 16.dp, vertical = 8.dp),
 			verticalArrangement = Arrangement.spacedBy(12.dp)
 		) {
+			GameCard(
+				gameDir = gameDir,
+				onGameDirChange = onGameDirChange
+			)
+
 			CommandLineCard(
 				argv = argv,
 				onArgvChange = onArgvChange,
@@ -188,6 +196,40 @@ fun LauncherScreen(
 				}
 			}
 		)
+	}
+}
+
+@OptIn(ExperimentalLayoutApi::class)
+@Composable
+private fun GameCard(
+	gameDir: GameDir,
+	onGameDirChange: (GameDir) -> Unit
+) {
+	Card(
+		modifier = Modifier.fillMaxWidth(),
+		colors = CardDefaults.cardColors(
+			containerColor = MaterialTheme.colorScheme.surfaceVariant
+		)
+	) {
+		Column(
+			modifier = Modifier.padding(16.dp),
+			verticalArrangement = Arrangement.spacedBy(12.dp)
+		) {
+			Text(
+				stringResource(R.string.section_game),
+				style = MaterialTheme.typography.titleMedium
+			)
+
+			FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+				GameDir.entries.forEach { dir ->
+					FilterChip(
+						selected = gameDir == dir,
+						onClick = { onGameDirChange(dir) },
+						label = { Text(stringResource(dir.labelRes)) }
+					)
+				}
+			}
+		}
 	}
 }
 

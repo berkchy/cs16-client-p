@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">CS16Client</string>
-    <string name="app_name_czero">CSCZClient</string>
+    <string name="subtitle_launcher">Xash3D FWGS launcher</string>
 
-    <string name="subtitle_cstrike">Counter-Strike 1.6</string>
-    <string name="subtitle_czero">Counter-Strike: Condition Zero</string>
+    <string name="section_game">Game</string>
+    <string name="game_cstrike">Counter-Strike 1.6</string>
+    <string name="game_czero">Condition Zero</string>
 
     <string name="section_command_line">Command line</string>
     <string name="section_appearance">Appearance</string>
