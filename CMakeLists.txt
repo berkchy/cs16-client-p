@@ -113,10 +113,16 @@ if(ANDROID)
 		DESTINATION ${EXTRAS_OUTPUT}
 	)
 
-	# The menu banners (gfx/shell/head_*.bmp) only carry bitmap text, the
-	# icons (btn_*.bmp, splash.bmp) are still needed by the in-game menu.
-	file(GLOB EXTRAS_BANNERS "${EXTRAS_OUTPUT}/gfx/shell/head_*.bmp")
-	file(REMOVE ${EXTRAS_BANNERS})
+	# The menu buttons and the menu banners are bitmap text: the head_*.bmp
+	# headers, the btn_*.bmp labels and the btns_main atlas. The menu falls
+	# back to plain text labels without them, the icons (touch/gfx/*.png) and
+	# the splash picture are still needed.
+	file(GLOB EXTRAS_TEXT_BITMAPS
+		"${EXTRAS_OUTPUT}/gfx/shell/head_*.bmp"
+		"${EXTRAS_OUTPUT}/gfx/shell/btn_*.bmp"
+		"${EXTRAS_OUTPUT}/gfx/shell/btns_main.bmp"
+	)
+	file(REMOVE ${EXTRAS_TEXT_BITMAPS})
 else()
 	set(EXTRAS_OUTPUT "${CMAKE_CURRENT_BINARY_DIR}/extras.pk3")
 
