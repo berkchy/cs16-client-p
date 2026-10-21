@@ -1,0 +1,3 @@
+# Compose + AndroidX handle their own shrinking, but the launcher keeps
+# reflecting over the saved state of its view models, so keep them intact.
+-keep class su.xash.cs16client.** { *; }

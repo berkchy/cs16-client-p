@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name_czero">CSCZClient</string>
+
+    <string name="subtitle_cstrike">Counter-Strike 1.6</string>
+    <string name="subtitle_czero">Counter-Strike: Condition Zero</string>
+
+    <string name="section_command_line">Komut satırı</string>
+    <string name="section_appearance">Görünüm</string>
+
+    <string name="label_arguments">Motor komutları</string>
+    <string name="help_arguments">Xash3D motoruna komut satırı olarak verilir, örneğin -dev 3 -log</string>
+    <string name="effective_command_line">Kullanılacak komut satırı: %1$s</string>
+
+    <string name="label_bots">YaPB botlarını yükle</string>
+    <string name="help_bots">Komut satırının sonuna “-dll @yapb” ekler</string>
+
+    <string name="label_theme">Tema</string>
+    <string name="theme_system">Sistem</string>
+    <string name="theme_light">Açık</string>
+    <string name="theme_dark">Koyu</string>
+    <string name="label_dynamic_color">Material You renkleri</string>
+    <string name="help_dynamic_color">Duvar kağıdının renklerini kullanır (Android 12+)</string>
+    <string name="dynamic_color_unsupported">Android 12 veya üzeri gerekiyor</string>
+
+    <string name="engine_installed">Xash3D motoru: %1$s</string>
+    <string name="engine_missing">Xash3D motoru bulunamadı</string>
+    <string name="engine_missing_title">Motor bulunamadı</string>
+    <string name="engine_missing_help">Oyunu başlatmak için Xash3D FWGS motorunu kurun.</string>
+
+    <string name="action_play">Oyna</string>
+    <string name="action_reset">Sıfırla</string>
+    <string name="action_copy">Kopyala</string>
+    <string name="action_paste">Yapıştır</string>
+    <string name="action_install">Kur</string>
+    <string name="action_close">Kapat</string>
+    <string name="play_help">Oyun yukarıdaki komut satırı ile başlar. Oyna düğmesine basmadan hiçbir şey açılmaz.</string>
+    <string name="copied_to_clipboard">Komut satırı panoya kopyalandı</string>
+</resources>

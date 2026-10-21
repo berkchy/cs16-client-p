@@ -7,14 +7,15 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher"
+        android:theme="@style/Theme.CS16Client"
         tools:targetApi="r">
 
         <activity
             android:name=".MainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
 
@@ -26,12 +27,12 @@
 		<activity
 			android:name=".CZeroActivity"
 			android:icon="@mipmap/ic_launcher_cz"
-			android:label="CSCZClient"
+			android:label="@string/app_name_czero"
 			android:roundIcon="@mipmap/ic_launcher_cz"
-			android:exported="true">
+			android:exported="true"
+			android:windowSoftInputMode="adjustResize">
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN" />
-
 				<category android:name="android.intent.category.LAUNCHER" />
 			</intent-filter>
 

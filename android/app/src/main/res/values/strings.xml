@@ -1,4 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">CS16Client</string>
+    <string name="app_name_czero">CSCZClient</string>
+
+    <string name="subtitle_cstrike">Counter-Strike 1.6</string>
+    <string name="subtitle_czero">Counter-Strike: Condition Zero</string>
+
+    <string name="section_command_line">Command line</string>
+    <string name="section_appearance">Appearance</string>
+
+    <string name="label_arguments">Engine arguments</string>
+    <string name="hint_arguments" translatable="false">-dev 3 -log</string>
+    <string name="help_arguments">Passed to the Xash3D engine as the command line, for example -dev 3 -log</string>
+    <string name="effective_command_line">Effective command line: %1$s</string>
+
+    <string name="label_bots">Load YaPB bots</string>
+    <string name="help_bots">Appends “-dll @yapb” to the command line</string>
+
+    <string name="label_theme">Theme</string>
+    <string name="theme_system">System</string>
+    <string name="theme_light">Light</string>
+    <string name="theme_dark">Dark</string>
+    <string name="label_dynamic_color">Material You colors</string>
+    <string name="help_dynamic_color">Follow the colors of the wallpaper (Android 12+)</string>
+    <string name="dynamic_color_unsupported">Requires Android 12 or newer</string>
+
+    <string name="engine_installed">Xash3D engine: %1$s</string>
+    <string name="engine_missing">Xash3D engine not found</string>
+    <string name="engine_missing_title">No engine found</string>
+    <string name="engine_missing_help">Install the Xash3D FWGS engine to launch the game.</string>
+
+    <string name="action_play">Play</string>
+    <string name="action_reset">Reset</string>
+    <string name="action_copy">Copy</string>
+    <string name="action_paste">Paste</string>
+    <string name="action_install">Install</string>
+    <string name="action_close">Close</string>
+    <string name="play_help">The game starts with the command line above. Nothing is launched until you press play.</string>
+    <string name="copied_to_clipboard">Command line copied to the clipboard</string>
 </resources>
